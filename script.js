@@ -2,6 +2,7 @@
 //1 - change checkmark color on incorrect/correct
 //2 - add status toast
 //3 - typing minigame
+//4 - add bar color change on incorrect/correct
 let alphaNumeric = [
   "0",
   "1",
