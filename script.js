@@ -47,8 +47,9 @@ function generateRandomArray(length) {
   return randomArray;
 }
 
-const textContainer = document.querySelector(".text-container");
+const textContainer = document.querySelector(".text-box");
 const randomArray = generateRandomArray(12);
+const textProgress = document.querySelector(".text-progress");
 
 randomArray.map((item) => {
   const span = document.createElement("span");
