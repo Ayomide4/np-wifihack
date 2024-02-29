@@ -231,6 +231,9 @@ body {
 }
 
 .progress-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   border: 1px solid grey;
   min-width: 2rem;
@@ -241,6 +244,14 @@ body {
   align-self: center;
   border-bottom: 1px solid grey;
   width: 1rem;
+}
+
+.bar-correct {
+  border-bottom: 1px solid #00e0bf;
+}
+
+.bar-incorrect {
+  border-bottom: 1px solid #ff6c6d;
 }
 
 .progress-circle-correct {
@@ -261,4 +272,36 @@ body {
   border-radius: 50%;
   min-width: 2rem;
   min-height: 2rem;
+}
+
+.text-input {
+  border: none;
+  background-color: transparent;
+  color: transparent;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  outline: none;
+  pointer-events: none;
+}
+
+.progress-background {
+  position: absolute;
+  width: 85%;
+  left: 0;
+  right: 0;
+  bottom: 3%;
+  background: #235952;
+  border: 10px solid #2c2d34;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.progress-bar {
+  background: #30d2a9;
+  width: calc(var(--width) * 1%);
+  height: 0.5rem;
+  border-radius: 5px;
 }
