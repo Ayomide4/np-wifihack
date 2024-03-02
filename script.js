@@ -1,8 +1,5 @@
 //TODO:
-//1 - change checkmark color on incorrect/correct
-//2 - add status toast
-//3 - typing minigame
-//4 - add bar color change on incorrect/correct
+//1 - add status toast
 let alphaNumeric = [
   "0",
   "1",
@@ -47,8 +44,8 @@ const checkmarkSvg = document.createElementNS(
   "svg",
 );
 checkmarkSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-checkmarkSvg.setAttribute("width", "20");
-checkmarkSvg.setAttribute("height", "20");
+checkmarkSvg.setAttribute("width", "14");
+checkmarkSvg.setAttribute("height", "14");
 checkmarkSvg.setAttribute("viewBox", "0 0 24 24");
 checkmarkSvg.setAttribute("fill-opacity", "0");
 
@@ -74,6 +71,8 @@ const textInput = document.querySelector(".text-input");
 const textContainer = document.querySelector(".text-box");
 const textProgress = document.querySelector(".progress-container");
 const progressBar = document.querySelector(".progress-bar");
+const toastSuccess = document.querySelector(".toast-success");
+const toastFail = document.querySelector(".toast-fail");
 
 let fail = false;
 let timer = setInterval(() => {
@@ -83,6 +82,7 @@ let timer = setInterval(() => {
   if (width <= 0.5) {
     // alert("You lost");
     // window.location.reload();
+    toastFail.classList.add("show");
   } else if (!fail) {
     progressBar.style.setProperty("--width", width - 0.25);
   }
@@ -101,6 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
   textInput.addEventListener("input", () => {
     let current = textInput.value[textInput.value.length - 1];
     if (current.toUpperCase() === randomArray[textInput.value.length - 1]) {
+      if (textInput.value.length === 12) {
+        clearInterval(timer);
+        toastSuccess.classList.add("show");
+      }
       textContainer.children[textInput.value.length - 1].classList.add(
         "correct",
       );
@@ -119,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
       bars[textInput.value.length - 1].classList.add("bar-correct");
     } else {
+      fail = true;
       textContainer.children[textInput.value.length - 1].classList.add(
         "incorrect",
       );
@@ -134,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "fill",
         "#ff3d00",
       );
+      toastFail.classList.add("show");
     }
   });
 });
